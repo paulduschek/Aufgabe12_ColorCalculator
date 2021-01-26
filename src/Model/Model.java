@@ -13,14 +13,14 @@ public class Model {
     private static ModularCounter green = new ModularCounter(0,256);
     private static ModularCounter blue = new ModularCounter(0,256);
 
-    public Model(ModularCounter r, ModularCounter g, ModularCounter b)
+    /*public Model(ModularCounter r, ModularCounter g, ModularCounter b)
     {
         this.red = r;
         this.green = g;
         this.blue = b;
-    }
+    }*/
 
-    public static void changeColorViaAbosluteValue (ColorCode cc, int value)        //nur eine Methode Kommentar
+    public static void changeColorViaAbsoluteValue(ColorCode cc, int value)        //nur eine Methode Kommentar
     {
         switch (cc)
         {
@@ -103,15 +103,15 @@ public class Model {
 
         if(rValue.length() == 1)
         {
-            rValue = rValue + "0";
+            rValue = "0" + rValue;
         }
         if(gValue.length() == 1)
         {
-            gValue = gValue + "0";
+            gValue = "0" + gValue;
         }
         if(bValue.length() == 1)
         {
-            bValue = bValue + "0";
+            bValue = "0" + bValue;
         }
         hashtag += rValue;
         hashtag += gValue;
