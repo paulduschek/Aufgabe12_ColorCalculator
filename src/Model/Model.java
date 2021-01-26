@@ -20,7 +20,7 @@ public class Model {
         this.blue = b;
     }
 
-    public static void changeColorViaAbosluteValue (ColorCode cc, int value)
+    public static void changeColorViaAbosluteValue (ColorCode cc, int value)        //nur eine Methode Kommentar
     {
         switch (cc)
         {
@@ -41,9 +41,42 @@ public class Model {
         }
     }
 
-    public static void changeColorViaRelativeValue (ColorCode cc, int value)
+    public static void changeColorViaRelativeValue (ColorCode cc, String value)
     {
+        if (value.equals("+10"))
+        {
+            switch (cc)
+            {
+                case RED:
+                    red.inc(10);        //red increased by 10
+                    break;
 
+                case GREEN:
+                    green.inc(10);
+                    break;
+
+                case BLUE:
+                    blue.inc(10);
+                    break;
+            }
+        }
+        else
+        {
+            switch (cc)
+            {
+                case RED:
+                    red.dec(10);    //red decreased by 10
+                    break;
+
+                case GREEN:
+                    green.dec(10);
+                    break;
+
+                case BLUE:
+                    blue.dec(10);
+                    break;
+            }
+        }
     }
 
     public static int getRed()
