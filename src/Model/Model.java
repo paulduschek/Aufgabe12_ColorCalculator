@@ -20,16 +20,32 @@ public class Model {
         this.blue = b;
     }
 
-    public static void changeColorViaAbosluteValue (ColorCode cc, String value)
+    public static void changeColorViaAbosluteValue (ColorCode cc, int value)
+    {
+        switch (cc)
+        {
+            case RED:
+                red.reset();        //red is set to zero
+                red.inc(value);
+                break;
+
+            case GREEN:
+                green.reset();      //green is set to zero
+                green.inc(value);
+                break;
+
+            case BLUE:
+                blue.reset();       //blue is set to zero
+                blue.inc(value);
+                break;
+        }
+    }
+
+    public static void changeColorViaRelativeValue (ColorCode cc, int value)
     {
 
     }
 
-    public static void changeColorViaRelativeValue (ColorCode cc, String value)
-    {
-
-    }
-    /*
     public static int getRed()
     {
 
@@ -53,6 +69,5 @@ public class Model {
     public static void main(String[] args) {
 
     }
-    */
 
 }
