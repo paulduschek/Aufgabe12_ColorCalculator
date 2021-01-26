@@ -142,8 +142,7 @@ public class Model {
                     System.out.println("Type a value for red, green and blue between 0 and 255");
                     System.out.println("Value for Red:");
                     int scannerRed = sc.nextInt();
-                    if(scannerRed >= 0)
-                    {
+                    if (scannerRed >= 0) {
                         changeColorViaAbsoluteValue(ColorCode.RED, scannerRed);
                     }
                     System.out.println("Value for Green:");
