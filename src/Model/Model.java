@@ -96,8 +96,28 @@ public class Model {
 
     public static String getHex()
     {
-        String s = "#";
-        
+        String hashtag = "#";
+        String rValue = Integer.toHexString(getRed());
+        String gValue = Integer.toHexString(getGreen());
+        String bValue = Integer.toHexString(getBlue());
+
+        if(rValue.length() == 1)
+        {
+            rValue = rValue + "0";
+        }
+        if(gValue.length() == 1)
+        {
+            gValue = gValue + "0";
+        }
+        if(bValue.length() == 1)
+        {
+            bValue = bValue + "0";
+        }
+        hashtag += rValue;
+        hashtag += gValue;
+        hashtag += bValue;
+
+        return hashtag;
     }
 
     public static void main(String[] args) {
