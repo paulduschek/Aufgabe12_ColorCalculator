@@ -2,27 +2,25 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="466.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField layoutY="34.0" prefHeight="42.0" prefWidth="150.0" />
+      <TextField fx:id="TextFieldRed" layoutY="34.0" prefHeight="42.0" prefWidth="150.0" />
       <Label layoutX="-1.0" prefHeight="34.0" prefWidth="150.0" text="Red" />
       <Label layoutY="76.0" prefHeight="34.0" prefWidth="150.0" text="Green" />
-      <TextField layoutY="110.0" prefHeight="42.0" prefWidth="150.0" />
+      <TextField fx:id="TextFieldGreen" layoutY="110.0" prefHeight="42.0" prefWidth="150.0" />
       <Label layoutY="152.0" prefHeight="34.0" prefWidth="150.0" text="Blue" />
-      <TextField layoutY="186.0" prefHeight="42.0" prefWidth="150.0" />
-      <Button layoutX="150.0" layoutY="1.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="+10" />
-      <Button layoutX="150.0" layoutY="110.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="-10" />
-      <Button layoutX="150.0" layoutY="186.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="-10" />
-      <Button layoutX="150.0" layoutY="34.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="-10" />
-      <Button layoutX="150.0" layoutY="76.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="+10" />
-      <Button layoutX="150.0" layoutY="152.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="+10" />
+      <TextField fx:id="TextFieldBlue" layoutY="186.0" prefHeight="42.0" prefWidth="150.0" />
+      <Button fx:id="IncreaseRedValue" layoutX="150.0" layoutY="1.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="+10" />
+      <Button fx:id="DecreaseGreenValue" layoutX="150.0" layoutY="110.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="-10" />
+      <Button fx:id="DecreaseBlueValue" layoutX="150.0" layoutY="186.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="-10" />
+      <Button fx:id="DecreaseRedValue" layoutX="150.0" layoutY="34.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="-10" />
+      <Button fx:id="IncreaseGreenValue" layoutX="150.0" layoutY="76.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="+10" />
+      <Button fx:id="IncreaseBlueValue" layoutX="150.0" layoutY="152.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="114.0" text="+10" />
       <Label layoutX="264.0" layoutY="161.0" prefHeight="24.0" prefWidth="30.0" text="Hex: " />
-      <Label layoutX="294.0" layoutY="161.0" prefHeight="24.0" prefWidth="98.0" text="Hex: " />
-      <TextArea layoutX="264.0" layoutY="1.0" prefHeight="162.0" prefWidth="200.0" />
+      <Label fx:id="HexValue" layoutX="294.0" layoutY="161.0" prefHeight="24.0" prefWidth="98.0" text=" " />
+      <Button fx:id="color" layoutX="264.0" layoutY="1.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="198.0" />
    </children>
 </AnchorPane>
