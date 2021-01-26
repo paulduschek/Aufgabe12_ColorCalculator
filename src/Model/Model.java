@@ -1,266 +1,191 @@
+/**
+ * @author Paul Duschek
+ * @version 1.0, 21.1.2021
+ */
+
 package Model;
 
-/**
- * Objects constructed from the ModularCounter class represent integral
- *   (non-negative) values under a modulus: they always lie in the range
- *   <code>[0,modulus-1]</code>.
- * Such counters can be incremented and decremented; incrementing a
- *   value to the modulus resets its value to zero; decrementing a
- *   value from 0 resets its value to <code>modulus-1</code>.
- * Each <code>ModularCounter</code> obeys the following class invariants
- *   <ul>
- *     <li>The modulus must be &gt; 0
- *     <li>The value must be in the range <code>[0,modulus-1]</code>
- *   </ul>
- */
-public class ModularCounter {
+import java.util.Scanner;
 
+public class Model {
 
-    /**
-     * Constructs a <code>ModularCounter</code> object, specifying the
-     *   initial value and modulus.
-     * It establishes the following class invariants
-     *   <ul>
-     *     <li>The modulus must be &gt 0
-     *     <li>The value must be in the range <code>[0,modulus-1]</code>
-     *   </ul>
-     *
-     * @param  value specifies the value of the modular number
-     * @param  modulus specifies the modulus of the modular number
-     *
-     * @throws IllegalArgumentException if <code>modulus</b> is &lt= 0 or
-     *           <code>value</code> is outside the appropriate range
-     */
-    public ModularCounter (int value, int modulus)
-            throws IllegalArgumentException
+    //Variable Definitions
+
+    private static ModularCounter red = new ModularCounter(0,256);
+    private static ModularCounter green = new ModularCounter(0,256);
+    private static ModularCounter blue = new ModularCounter(0,256);
+
+    /*public Model(ModularCounter r, ModularCounter g, ModularCounter b)  Konstruktor vorhanden, wegen des UML Models jedoch nicht verwendet
     {
-        if (modulus < 1)
-            throw new IllegalArgumentException("ModularCounter - modulus("+modulus+") non-positive");
-        if (value < 0 || value >= modulus)
-            throw new IllegalArgumentException("ModularCounter - value("+value+") not in range [0,"+(modulus-1)+"]");
+        this.red = r;
+        this.green = g;
+        this.blue = b;
+    }*/
 
-        this.value   = value;
-        this.modulus = modulus;
+    public static void changeColorViaAbsoluteValue(ColorCode cc, int value)        //für changeColorViaAbsoluteValue habe ich nur eine Methode mit dem Wrt int value geschrieben, da ich dies für sinnvoller gehalten habe
+    {
+        switch (cc)
+        {
+            case RED:
+                red.reset();        //red is set to zero
+                red.inc(value);
+                break;
+
+            case GREEN:
+                green.reset();      //green is set to zero
+                green.inc(value);
+                break;
+
+            case BLUE:
+                blue.reset();       //blue is set to zero
+                blue.inc(value);
+                break;
+        }
     }
 
-
-
-    /**
-     * Constructs a <code>ModularCounter</code> object, specifying the
-     *   modulus only (the value is zero).
-     *
-     * @param  modulus specifies the modulus of the modular number
-     */
-    public ModularCounter (int modulus)
-    {this(0,modulus);}
-
-
-
-    /**
-     * Returns the value of this <code>ModularCounter</code>.
-     *
-     * @return the value of this <code>ModularCounter</code>
-     */
-    public int getValue()
-    {return value;}
-
-
-
-    /**
-     * Returns the modulus of this <code>ModularCounter</code>.
-     *
-     * @return the modulus of this <code>ModularCounter</code>
-     */
-    public int getModulus()
-    {return modulus;}
-
-
-
-    /**
-     * Returns whether or not this <code>ModularCounter</b> is equal to
-     *   <code>other</code>.
-     *
-     * @param  other specifies the other <code>ModularCounter</b> in the
-     *           equality check
-     *
-     * @return whether or not this <code>ModularCounter</b> is equal to
-     *   <code>other</code>
-     */
-    public boolean equals(Object other)
+    public static void changeColorViaRelativeValue (ColorCode cc, String value)         //auch hier habe ich trotz der Angabe im UML Diagramm nur eine Methode geschreiben jedoch mit einem String value keinem int
     {
-        if ( !(other instanceof ModularCounter) )
-            return false;
-        if (this == other)
-            return true;
+        if (value.equals("+10"))
+        {
+            switch (cc)
+            {
+                case RED:
+                    red.inc(10);        //red increased by 10
+                    break;
 
-        ModularCounter otherMC = (ModularCounter)other;
+                case GREEN:
+                    green.inc(10);
+                    break;
 
-        return value == otherMC.value && modulus == otherMC.modulus;
-    }
-
-
-
-    /**
-     * Returns whether or not this <code>ModularCounter</b>'s value is
-     *   equal to zero (independent of the modulus).
-     *
-     * @return whether or not this <code>ModularCounter</b>'s value is
-     *   equal to zero (independent of the modulus)
-     */
-    public boolean isZero()
-    {return value == 0;}
-
-
-
-    /**
-     * Compares its two arguments for order.
-     * Returns a negative integer, zero, or a positive integer as the
-     *   first argument is less than, equal to, or greater than the
-     *   second.
-     *
-     * @return whether this <code>ModularCounter</b>'s value is
-     *   less than, equal to, or greater than <code>other</code>'s
-     *   value (independent of the moduls)
-     */
-    public int compareTo(ModularCounter mc)
-    {return value - mc.value;}
-
-
-
-    /**
-     * Returns a <code>String<code> representation of the state of this
-     *  <code>ModularCounter</code>: value (mod modulus).
-     * E.g.: 6 (mod 10)
-     *
-     * @return a <code>String<code> representation of the state of this
-     *  <code>ModularCounter</code>: value (mod modulus)
-     */
-    public String toString ()
-    {return value + "(mod " + modulus + ")";}
-
-
-
-    /**
-     * Reset this <code>ModularCounter</code> to store the value 0.
-     */
-    public void reset()
-    {value = 0;}
-
-
-
-    /**
-     * Increment this <code>ModularCounter</code> by 1 (with rollover to
-     *   0 beyond modulus-1).
-     */
-    public void inc()
-    {
-        if (value < modulus-1)
-            value++;
+                case BLUE:
+                    blue.inc(10);
+                    break;
+            }
+        }
         else
-            value = 0;
+        {
+            switch (cc)
+            {
+                case RED:
+                    red.dec(10);    //red decreased by 10
+                    break;
+
+                case GREEN:
+                    green.dec(10);
+                    break;
+
+                case BLUE:
+                    blue.dec(10);
+                    break;
+            }
+        }
     }
 
-
-
-    /**
-     * Increment this <code>ModularCounter</code> by <code>delta</code>
-     *  (with rollover to 0 beyond modulus-1).
-     *
-     * @param  delta specifies the amount to increment by
-     *
-     * @throws IllegalArgumentException if <code>delta</b> is &lt 0
-     */
-    public void inc (int delta)
-            throws IllegalArgumentException
+    public static int getRed()
     {
-        if (delta < 0)
-            throw new IllegalArgumentException("ModularCounter: inc - delta("+delta+") non-positive");
-        for (int i=1; i <= delta; i++)
-            inc();
+        return red.getValue();
     }
 
-
-
-    /**
-     * Decrement this <code>ModularCounter</code> by 1 (with rollover to
-     *   modulus-1 beyond 0).
-     */
-    public void dec()
+    public static int getGreen()
     {
-        if (value == 0)
-            value = modulus-1;
-        else
-            value--;
+        return green.getValue();
     }
 
-
-
-    /**
-     * Decrement this <code>ModularCounter</code> by <code>delta</code>
-     *  (with rollover to modulus-1 beyond 0).
-     *
-     * @param  delta specifies the amount to decrement by
-     *
-     * @throws IllegalArgumentException if <code>delta</b> is &lt 0
-     */
-    public void dec (int delta)
-            throws IllegalArgumentException
+    public static int getBlue()
     {
-        if (delta < 0)
-            throw new IllegalArgumentException("ModularCounter: inc - delta("+delta+") non-positive");
-        for (int i=1; i <= delta; i++)
-            dec();
+        return blue.getValue();
     }
 
-
-
-    /**
-     * IncrementDecrement this <code>ModularCounter</code> by <code>delta</code>
-     *  (with rollover to 0 beyond modulus-1/modulus-1 beyond 0).
-     *
-     * @param  delta specifies the amount to increment/decrement by
-     */
-    public void update (int delta)
+    public static String getHex()
     {
-        if (delta >= 0)
-            for (int i=1; i <= delta; i++)
-                inc();
-        else
-            for (int i=1; i <= -delta; i++)
-                dec();
+        String hashtag = "#";
+        String rValue = Integer.toHexString(getRed());
+        String gValue = Integer.toHexString(getGreen());
+        String bValue = Integer.toHexString(getBlue());
+
+        if(rValue.length() == 1)
+        {
+            rValue = "0" + rValue;
+        }
+        if(gValue.length() == 1)
+        {
+            gValue = "0" + gValue;
+        }
+        if(bValue.length() == 1)
+        {
+            bValue = "0" + bValue;
+        }
+        hashtag += rValue;
+        hashtag += gValue;
+        hashtag += bValue;
+
+        return hashtag;
     }
 
+    public static void main(String[] args) {
+        //Variable Definition
+        boolean isRunning = true;
 
+        //Scanner Definition
+        Scanner sc = new Scanner(System.in);
 
-    /**
-     * Returns a new <code>ModularCounter</code> after prompting the user
-     *   for its value and modulus.
-     * If an illegal value is entered, the user is reprompted
-     * For example, if we write <code>ModularCounter.prompt("Enter Hours")</code>
-     *   an interaction on the console screen might look like
-     * <code><pre>  Enter Hours
-     *    Enter value  : 2
-     *    Enter modulus: 12</pre></code>
-     *
-     * @param message specifies the message with which to prompt the user
-     *
-     * @return a new <code>ModularCounter</code> after prompting the user
-     *   for its value and modulus.
-     */
+        while (isRunning == true)
+        {
+            System.out.printf("1: Print color value %n2: set color for red, green or blue %n3: + or - value 10 for red, green or blue %nType something other to Quit%n");
+            int selection = sc.nextInt();
+            switch (selection)
+            {
+                case 1:
+                    System.out.println(getHex());
 
+                case 2:
+                    System.out.println("Type a value for red, green and blue between 0 and 255");
+                    System.out.println("Value for Red:");
+                    int scannerRed = sc.nextInt();
+                    if (scannerRed >= 0) {
+                        changeColorViaAbsoluteValue(ColorCode.RED, scannerRed);
+                    }
+                    System.out.println("Value for Green:");
+                    int scannerGreen = sc.nextInt();
+                    if(scannerGreen >= 0)
+                    {
+                        changeColorViaAbsoluteValue(ColorCode.GREEN, scannerGreen);
+                    }
+                    System.out.println("Value for Blue:");
+                    int scannerBlue = sc.nextInt();
+                    if(scannerBlue >= 0)
+                    {
+                        changeColorViaAbsoluteValue(ColorCode.BLUE, scannerBlue);
+                    }
+                    System.out.printf("Hexvalue: %s %n",getHex());
+                    break;
 
+                case 3:
+                    System.out.println("Which value should be changed? r for Red, g for Green, b for Blue");
+                    String c = sc.next();
+                    System.out.println("Should the value be incremented or decremented? +10 or -10");
+                    String txt = sc.next();
 
+                    if(c.contains("r"))
+                    {
+                        changeColorViaRelativeValue(ColorCode.RED, txt);
+                    }
+                    else if(c.contains("g"))
+                    {
+                        changeColorViaRelativeValue(ColorCode.GREEN, txt);
+                    }
+                    else
+                    {
+                        changeColorViaRelativeValue(ColorCode.BLUE, txt);
+                    }
 
-    /**
-     * Stores the value of the <code>ModularCounter</code>.
-     * It must always lie in the range <code>[0,modulus-1]</code>.
-     */
-    private int value;
+                    System.out.printf("Hexvalue: %s %n",getHex());
+                    break;
 
+                default:
+                    isRunning = false;
+            }
+        }
+    }
 
-    /**
-     * Stores the moduls of the <code>ModularCounter</code>.
-     * It must always be positive.
-     */
-    private int modulus;
 }
