@@ -5,6 +5,8 @@
 
 package Model;
 
+import java.util.Scanner;
+
 public class Model {
 
     //Variable Definitions
@@ -121,7 +123,70 @@ public class Model {
     }
 
     public static void main(String[] args) {
-        
+        //Variable Definition
+        boolean isRunning = true;
+
+        //Scanner Definition
+        Scanner sc = new Scanner(System.in);
+
+        while (isRunning == true)
+        {
+            System.out.printf("1: Print color value %n2: set color for red, green or blue %n3: + or - value 10 for red, green or blue %nType something other to Quit%n");
+            int selection = sc.nextInt();
+            switch (selection)
+            {
+                case 1:
+                    System.out.println(getHex());
+
+                case 2:
+                    System.out.println("Type a value for red, green and blue between 0 and 255");
+                    System.out.println("Value for Red:");
+                    int scannerRed = sc.nextInt();
+                    if(scannerRed >= 0)
+                    {
+                        changeColorViaAbsoluteValue(ColorCode.RED, scannerRed);
+                    }
+                    System.out.println("Value for Green:");
+                    int scannerGreen = sc.nextInt();
+                    if(scannerGreen >= 0)
+                    {
+                        changeColorViaAbsoluteValue(ColorCode.GREEN, scannerGreen);
+                    }
+                    System.out.println("Value for Blue:");
+                    int scannerBlue = sc.nextInt();
+                    if(scannerBlue >= 0)
+                    {
+                        changeColorViaAbsoluteValue(ColorCode.BLUE, scannerBlue);
+                    }
+                    System.out.printf("Hexvalue: %s %n",getHex());
+                    break;
+
+                case 3:
+                    System.out.println("Which value should be changed? r for Red, g for Green, b for Blue");
+                    String c = sc.next();
+                    System.out.println("Should the value be incremented or decremented? +10 or -10");
+                    String txt = sc.next();
+
+                    if(c.contains("r"))
+                    {
+                        changeColorViaRelativeValue(ColorCode.RED, txt);
+                    }
+                    else if(c.contains("g"))
+                    {
+                        changeColorViaRelativeValue(ColorCode.GREEN, txt);
+                    }
+                    else
+                    {
+                        changeColorViaRelativeValue(ColorCode.BLUE, txt);
+                    }
+
+                    System.out.printf("Hexvalue: %s %n",getHex());
+                    break;
+
+                default:
+                    isRunning = false;
+            }
+        }
     }
 
 }
