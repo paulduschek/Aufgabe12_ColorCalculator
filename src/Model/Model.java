@@ -81,22 +81,23 @@ public class Model {
 
     public static int getRed()
     {
-
+        return red.getValue();
     }
 
     public static int getGreen()
     {
-
+        return green.getValue();
     }
 
     public static int getBlue()
     {
-
+        return blue.getValue();
     }
 
     public static String getHex()
     {
-
+        String s = "#";
+        
     }
 
     public static void main(String[] args) {
