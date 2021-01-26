@@ -13,14 +13,14 @@ public class Model {
     private static ModularCounter green = new ModularCounter(0,256);
     private static ModularCounter blue = new ModularCounter(0,256);
 
-    /*public Model(ModularCounter r, ModularCounter g, ModularCounter b)
+    /*public Model(ModularCounter r, ModularCounter g, ModularCounter b)  Konstruktor vorhanden, wegen des UML Models jedoch nicht verwendet
     {
         this.red = r;
         this.green = g;
         this.blue = b;
     }*/
 
-    public static void changeColorViaAbsoluteValue(ColorCode cc, int value)        //nur eine Methode Kommentar
+    public static void changeColorViaAbsoluteValue(ColorCode cc, int value)        //für changeColorViaAbsoluteValue habe ich nur eine Methode mit dem Wrt int value geschrieben, da ich dies für sinnvoller gehalten habe
     {
         switch (cc)
         {
@@ -41,7 +41,7 @@ public class Model {
         }
     }
 
-    public static void changeColorViaRelativeValue (ColorCode cc, String value)
+    public static void changeColorViaRelativeValue (ColorCode cc, String value)         //auch hier habe ich trotz der Angabe im UML Diagramm nur eine Methode geschreiben jedoch mit einem String value keinem int
     {
         if (value.equals("+10"))
         {
@@ -121,7 +121,7 @@ public class Model {
     }
 
     public static void main(String[] args) {
-
+        
     }
 
 }

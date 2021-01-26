@@ -43,8 +43,6 @@ public class Controller implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(Controller.class.getResource("sample.fxml"));
             Parent root = fxmlLoader.load();
 
-            //Controller control = fxmlLoader.getController();
-
             stage.setTitle("Aufgabe 12 - Duschek");
             stage.setScene(new Scene(root, 466, 230));
             stage.show();
@@ -75,7 +73,7 @@ public class Controller implements Initializable {
     {
         TextField Text = (TextField) e.getSource();     //Typecast to Type TextField
 
-        if(e.getCode().getCode() >= 48 && e.getCode().getCode() <= 57)      //if Schleife mit  Hilfe von Herr Bretbacher
+        if(e.getCode().getCode() >= 48 && e.getCode().getCode() <= 57)      //if Schleife mit  Hilfe von Herr Bretbacher, sie bewirkt, dass bei der Eingabe nur Zahlen der Tastatur zugelassen werden
         {
             if (Text.getId().contains("Red")) {
                 Model.changeColorViaAbsoluteValue(ColorCode.RED, Integer.parseInt(Text.getText()));
