@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="466.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerFXML.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerFXML.Controller">
    <children>
       <TextField fx:id="TextFieldRed" layoutY="34.0" onKeyReleased="#absoluteInputValue" prefHeight="42.0" prefWidth="150.0" />
       <Label layoutX="-1.0" prefHeight="34.0" prefWidth="150.0" text="Red" />
@@ -22,5 +22,7 @@
       <Label layoutX="264.0" layoutY="161.0" prefHeight="24.0" prefWidth="30.0" text="Hex: " />
       <Label fx:id="HexValue" layoutX="294.0" layoutY="161.0" prefHeight="24.0" prefWidth="98.0" text=" " />
       <Button fx:id="colorBox" layoutX="264.0" layoutY="1.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="198.0" />
+      <Button layoutX="463.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="164.0" text="Load" />
+      <Button layoutX="463.0" layoutY="74.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="164.0" text="Save" />
    </children>
 </AnchorPane>
