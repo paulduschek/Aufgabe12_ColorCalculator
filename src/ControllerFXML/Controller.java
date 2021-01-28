@@ -8,6 +8,7 @@ package ControllerFXML;
 
 import Model.Model;             //implemented Model and ColorCode because they are not in the same package
 import Model.ColorCode;
+import Model.ModularCounter;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -33,7 +34,6 @@ public class Controller implements Initializable {
     @FXML
     Button colorBox = new Button();
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
@@ -44,7 +44,7 @@ public class Controller implements Initializable {
             Parent root = fxmlLoader.load();
 
             stage.setTitle("Aufgabe 12 - Duschek");
-            stage.setScene(new Scene(root, 466, 230));
+            stage.setScene(new Scene(root, 628, 230));
             stage.show();
         } catch (IOException ex) {
             System.err.println("Something wrong with sample.fxml!");
@@ -73,17 +73,18 @@ public class Controller implements Initializable {
     {
         TextField Text = (TextField) e.getSource();     //Typecast to Type TextField
 
-        if(e.getCode().getCode() >= 48 && e.getCode().getCode() <= 57)      //if Schleife mit  Hilfe von Herr Bretbacher, sie bewirkt, dass bei der Eingabe nur Zahlen der Tastatur zugelassen werden
+        if((e.getCode().getCode() >= 48 && e.getCode().getCode() <= 57) || e.getCode().getCode() >= 96 && e.getCode().getCode() <= 105)      //if Schleife welche bewirkt, dass bei der Eingabe nur Zahlen zugelassen werden
         {
             if (Text.getId().contains("Red")) {
                 Model.changeColorViaAbsoluteValue(ColorCode.RED, Integer.parseInt(Text.getText()));
             } else if (Text.getId().contains("Green")) {
                 Model.changeColorViaAbsoluteValue(ColorCode.GREEN, Integer.parseInt(Text.getText()));
-            } else{
+            } else {
                 Model.changeColorViaAbsoluteValue(ColorCode.BLUE, Integer.parseInt(Text.getText()));
             }
         }
         else {
+            System.out.println("Type in a valid number!");
             Text.clear();
         }
 
