@@ -22,7 +22,7 @@
       <Label layoutX="264.0" layoutY="161.0" prefHeight="24.0" prefWidth="30.0" text="Hex: " />
       <Label fx:id="HexValue" layoutX="294.0" layoutY="161.0" prefHeight="24.0" prefWidth="98.0" text=" " />
       <Button fx:id="colorBox" layoutX="264.0" layoutY="1.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="198.0" />
-      <Button layoutX="463.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="164.0" text="Load" />
-      <Button layoutX="463.0" layoutY="74.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="164.0" text="Save" />
+      <Button layoutX="463.0" layoutY="-2.0" mnemonicParsing="false" onAction="#loadFromFile" prefHeight="72.0" prefWidth="164.0" text="Load" />
+      <Button layoutX="463.0" layoutY="74.0" mnemonicParsing="false" onAction="#saveToFile" prefHeight="72.0" prefWidth="164.0" text="Save" />
    </children>
 </AnchorPane>

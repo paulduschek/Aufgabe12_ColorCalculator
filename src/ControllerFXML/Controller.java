@@ -30,9 +30,15 @@ public class Controller implements Initializable {
 
     //FXML Implementations
     @FXML
-    Label HexValue = new Label();
+    Label HexValue;
     @FXML
-    Button colorBox = new Button();
+    Button colorBox;
+    @FXML
+    TextField TextFieldRed;
+    @FXML
+    TextField TextFieldGreen;
+    @FXML
+    TextField TextFieldBlue;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -92,5 +98,22 @@ public class Controller implements Initializable {
         HexValue.setText(hex);
 
         colorBox.setStyle("-fx-background-color: " + hex + ";");
+    }
+
+    public void loadFromFile()
+    {
+        Model.loadFromFile();
+        String hex = Model.getHex();
+        HexValue.setText(hex);
+        colorBox.setStyle("-fx-background-color: " + Model.getHex() + ";");
+
+        TextFieldRed.setText(String.valueOf(Model.getRed()));
+        TextFieldGreen.setText(String.valueOf(Model.getGreen()));
+        TextFieldBlue.setText(String.valueOf(Model.getBlue()));
+    }
+
+    public void saveToFile()
+    {
+        Model.saveToFile();
     }
 }

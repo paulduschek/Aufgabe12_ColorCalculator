@@ -156,11 +156,11 @@ public class Model {
 
             bw.write("Color File Format 1.0");
             bw.write(System.lineSeparator());
-            bw.write(getRed());
+            bw.write(String.valueOf(getRed()));
             bw.write(System.lineSeparator());
-            bw.write(getGreen());
+            bw.write(String.valueOf(getGreen()));
             bw.write(System.lineSeparator());
-            bw.write(getBlue());
+            bw.write(String.valueOf(getBlue()));
 
             bw.close();
         }
