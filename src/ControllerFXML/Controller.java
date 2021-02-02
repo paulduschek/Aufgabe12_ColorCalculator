@@ -102,6 +102,7 @@ public class Controller implements Initializable {
     public void loadFromFile()
     {
         Model.loadFromFile();
+        System.out.println("loaded from file");
         String hex = Model.getHex();
         HexValue.setText(hex);
         colorBox.setStyle("-fx-background-color: " + Model.getHex() + ";");
@@ -114,5 +115,6 @@ public class Controller implements Initializable {
     public void saveToFile()
     {
         Model.saveToFile();
+        System.out.println("saved to file");
     }
 }
