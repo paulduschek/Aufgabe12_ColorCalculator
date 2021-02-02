@@ -8,7 +8,6 @@ package ControllerFXML;
 
 import Model.Model;             //implemented Model and ColorCode because they are not in the same package
 import Model.ColorCode;
-import Model.ModularCounter;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
